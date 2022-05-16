@@ -34,9 +34,13 @@
                 <td th:text="${user.getUsername()}"></td>
                 <td th:each="role : ${user.roles}"
                     th:text="${role.name}"></td>
-<!--                <td th:text="${user.getRoles()}"></td>-->
                 <td><a th:href="@{/admin/users/user-update/{id}(id=${user.id})}">Edit</a></td>
-                <td><a th:href="@{/admin/users/user-delete/{id}(id=${user.id})}">Delete</a></td>
+                <td>
+                    <form action="#" th:action="@{/admin/users/user-delete/{id}(id=${user.id})}" th:method="delete" >
+                        <input type="hidden" name="_method" value="Delete" />
+                        <button type="submit" id="submitButtonDelete">Delete</button>
+                    </form>
+                </td>
             </tr>
             </tbody>
         </table>
